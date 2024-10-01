@@ -267,3 +267,6 @@ function goto() {
     cd $(find ~ -name "$1" -type f -exec dirname {} \; 2>/dev/null | head -n 1)
 }
 export -f goto
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
