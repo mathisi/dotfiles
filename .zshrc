@@ -134,7 +134,6 @@ alias get-certificates="cf login && ~/Documents/SAP/SAP_Praxisphasen/SB/cf-debug
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-alias vim"nvim"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -244,7 +243,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-alias vim"nvim"
 alias jmeter="open /Applications/apache-jmeter-5.6.3/bin/ApacheJmeter.jar"
 alias get-certificates="cf login && ~/Documents/SAP/SAP_Praxisphasen/SB/cf-debugging-utils/get-certificates/get-certificates.sh"
 alias pp="podman"
@@ -256,17 +254,22 @@ alias ij='open -a /Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea'
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
+export EDITOR=nvim
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+
 # git aliases
 alias g='LANGUAGE=en_US.UTF-8 git'
 alias gp='LANGUAGE=en_US.UTF-8 git push'
 alias gc='LANGUAGE=en_US.UTF-8 git clone'
 alias gm='LANGUAGE=en_US.UTF-8 git checkout main && git pull && git checkout - && git merge main'
 
+eval "$(tmuxifier init -)"
+
 # functions:
-function goto() {
-    cd $(find ~ -name "$1" -type f -exec dirname {} \; 2>/dev/null | head -n 1)
-}
-export -f goto
+# function goto() {
+#     cd $(find ~ -name "$1" -type f -exec dirname {} \; 2>/dev/null | head -n 1)
+# }
+# export -f goto
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 

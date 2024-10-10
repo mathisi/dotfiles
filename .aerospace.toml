@@ -165,6 +165,14 @@ if.app-id = 'com.microsoft.Outlook'
 run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.iCal'
+run = 'move-node-to-workspace 6'
+ 
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace 4'
 
