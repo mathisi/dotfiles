@@ -251,8 +251,12 @@ alias mine="~/Documents/Privat/Programmieren/CliMinesweeper/MineSweeper/mine"
 alias '?'="bash ~/Documents/Privat/Programmieren/skripts/duck.sh"
 alias w="open ~/.wine/drive_c/"
 alias ij='open -a /Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea'
+alias t1='tree -L 1'
+alias ts='tmuxifier s'
+alias tes='tmuxifier es'
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="$PATH:$HOME/.cargo/bin"
 
 export EDITOR=nvim
 export PATH="$HOME/.tmuxifier/bin:$PATH"
