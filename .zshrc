@@ -271,6 +271,7 @@ alias '?'="bash ~/Documents/Privat/Programmieren/skripts/duck.sh"
 alias w="open ~/.wine/drive_c/"
 alias ij='open -a /Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea'
 alias t1='tree -L 1'
+alias t2='tree -L 2'
 alias ts='tmuxifier s'
 alias tes='tmuxifier es'
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
@@ -281,6 +282,7 @@ export EDITOR=nvim
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 
 # git aliases
+alias lg='lazygit'
 alias g='LANGUAGE=en_US.UTF-8 git'
 alias gp='LANGUAGE=en_US.UTF-8 git push'
 alias gc='LANGUAGE=en_US.UTF-8 git clone'
