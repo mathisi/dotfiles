@@ -275,6 +275,7 @@ alias t2='tree -L 2'
 alias ts='tmuxifier s'
 alias tes='tmuxifier es'
 alias cd="z"
+alias back"cd -"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="$PATH:$HOME/.cargo/bin"
