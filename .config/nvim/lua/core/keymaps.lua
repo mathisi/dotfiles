@@ -55,11 +55,11 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Git
-vim.keymap.set('n', '<leader>io', '<cmd>:GitBlameOpenCommitURL<cr>', { desc = '[O]pen commit in GitHub' })
-vim.keymap.set('n', '<leader>ic', '<cmd>:GitBlameCopySHA<cr>', { desc = '[C]opy SHA of commit under cursor' })
-vim.keymap.set('n', '<leader>if', '<cmd>:GitBlameOpenFileURL<cr>', { desc = 'Open current [F]ile in GitHub' })
-vim.keymap.set('n', '<leader>iu', '<cmd>:GitBlameCopyFileURL<cr>', { desc = 'Copy current file [U]RL' })
-vim.keymap.set('n', '<leader>ig', '<cmd>:LazyGit<cr>', { desc = 'Launch Lazy[G]it' })
+vim.keymap.set('n', '<leader>go', '<cmd>:GitBlameOpenCommitURL<cr>', { desc = '[O]pen commit in GitHub' })
+vim.keymap.set('n', '<leader>gc', '<cmd>:GitBlameCopySHA<cr>', { desc = '[C]opy SHA of commit under cursor' })
+vim.keymap.set('n', '<leader>gf', '<cmd>:GitBlameOpenFileURL<cr>', { desc = 'Open current [F]ile in GitHub' })
+vim.keymap.set('n', '<leader>gu', '<cmd>:GitBlameCopyFileURL<cr>', { desc = 'Copy current file [U]RL' })
+vim.keymap.set('n', '<leader>gg', '<cmd>:LazyGit<cr>', { desc = 'Launch Lazy[G]it' })
 
 -- Oil
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
@@ -115,7 +115,7 @@ local telescope_builtin = require 'telescope.builtin'
 vim.keymap.set('n', 'gd', telescope_builtin.lsp_definitions, { desc = '[G]oto [D]efinition' })
 vim.keymap.set('n', 'gr', telescope_builtin.lsp_references, { desc = '[G]oto [R]eferences' })
 vim.keymap.set('n', 'gI', telescope_builtin.lsp_implementations, { desc = '[G]oto [I]mplementation' })
-vim.keymap.set('n', '<leader>gD', telescope_builtin.lsp_type_definitions, { desc = 'Type [D]efinition' })
+vim.keymap.set('n', 'gT', telescope_builtin.lsp_type_definitions, { desc = 'Type [D]efinition' })
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclaration' })
 
 -- LSP-specific key mappings
@@ -123,7 +123,7 @@ vim.keymap.set('n', '<leader>cds', telescope_builtin.lsp_document_symbols, { des
 vim.keymap.set('n', '<leader>cws', telescope_builtin.lsp_dynamic_workspace_symbols, { desc = '[W]orkspace [S]ymbols' })
 vim.keymap.set('n', '<leader>crn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
-vim.keymap.set('n', 'cK', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
+vim.keymap.set('n', '<leader>cK', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
 
 -- DAP
 -- Import necessary modules for debugging

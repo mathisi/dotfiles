@@ -274,6 +274,7 @@ alias t1='tree -L 1'
 alias t2='tree -L 2'
 alias ts='tmuxifier s'
 alias tes='tmuxifier es'
+alias cd="z"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="$PATH:$HOME/.cargo/bin"
@@ -283,10 +284,6 @@ export PATH="$HOME/.tmuxifier/bin:$PATH"
 
 # git aliases
 alias lg='lazygit'
-alias g='LANGUAGE=en_US.UTF-8 git'
-alias gp='LANGUAGE=en_US.UTF-8 git push'
-alias gc='LANGUAGE=en_US.UTF-8 git clone'
-alias gm='LANGUAGE=en_US.UTF-8 git checkout main && git pull && git checkout - && git merge main'
 
 eval "$(tmuxifier init -)"
 
@@ -295,6 +292,65 @@ eval "$(tmuxifier init -)"
 #     cd $(find ~ -name "$1" -type f -exec dirname {} \; 2>/dev/null | head -n 1)
 # }
 # export -f goto
+
+
+# ---- FZF -----
+
 # Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-# zprof
+eval "$(fzf --zsh)"
+
+# --- setup fzf theme ---
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
+--color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
+--color=marker:#babbf1,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284 \
+--color=selected-bg:#51576d \
+--multi"
+
+# -- Use fd instead of fzf --
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+source ~/fzf-git.sh/fzf-git.sh
+
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  esac
+}
+
+# ---- Eza (better ls) -----
+
+alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+
+# thefuck alias
+eval $(thefuck --alias)
+eval $(thefuck --alias fk)
