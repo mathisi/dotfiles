@@ -185,6 +185,12 @@ local function on_rust_attach(client, bufnr)
   vim.keymap.set('n', '<Leader>a', rt.code_action_group.code_action_group, { buffer = bufnr })
 end
 
+-- GitHub Copilot
+-- Use Option + Enter to accept GitHub Copilot suggestions
+-- C-CR did not work
+vim.api.nvim_set_keymap('i', '<C-c>', 'copilot#Accept("<CR>")', { expr = true, noremap = true, silent = true })
+vim.g.copilot_no_tab_map = true
+
 return {
   on_rust_attach = on_rust_attach,
 }
