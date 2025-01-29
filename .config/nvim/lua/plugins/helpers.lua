@@ -36,8 +36,9 @@ return {
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
+  -- lazy.nvim
   {
-    'christoomey/vim-tmux-navigator',
+    'alexghergh/nvim-tmux-navigation',
   },
   {
     'windwp/nvim-autopairs',
