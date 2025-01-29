@@ -1,4 +1,7 @@
 # zmodload zsh/zprof
+# de -v
+#
+set -o vi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -86,6 +89,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
+# de -v
+# 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -93,7 +98,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
   git
   zsh-autosuggestions
-  z
+  # z
   )
 
 source $ZSH/oh-my-zsh.sh
@@ -274,14 +279,15 @@ alias t1='tree -L 1'
 alias t2='tree -L 2'
 alias ts='tmuxifier s'
 alias tes='tmuxifier es'
-alias cd="z"
 alias back"cd -"
+alias splitmd="~/Documents/SAP/SAP_Praxisphasen/Oyster/rust-learning/markdown_splitter/target/release/markdown_splitter"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="$PATH:$HOME/.cargo/bin"
 
 export EDITOR=nvim
 export PATH="$HOME/.tmuxifier/bin:$PATH"
+export PATH="$HOME/.wasmtime/bin:$PATH"
 
 # git aliases
 alias lg='lazygit'
@@ -294,6 +300,18 @@ eval "$(tmuxifier init -)"
 # }
 # export -f goto
 
+# ---- yazi ----
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+# ---- Zoxide --
+eval "$(zoxide init zsh)"
 
 # ---- FZF -----
 
