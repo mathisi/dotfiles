@@ -288,6 +288,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export EDITOR=nvim
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 export PATH="$HOME/.wasmtime/bin:$PATH"
+export PATH="$HOME/Documents/SAP/SAP_Praxisphasen/Oyster/ts-to-wasm/Wasmnizer-ts/runtime-library/build/:$PATH"
 
 # git aliases
 alias lg='lazygit'
