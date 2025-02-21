@@ -91,4 +91,30 @@ return {
       },
     },
   },
+  {
+    'vimpostor/vim-lumen',
+    config = function()
+      -- Define themes for light and dark modes
+      vim.g.lumen_light_theme = 'catppuccin-latte'
+      vim.g.lumen_dark_theme = 'catppuccin-frappe'
+
+      -- Override how lumen applies the colorscheme
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'LumenLight',
+        callback = function()
+          vim.cmd.colorscheme 'catppuccin-latte'
+        end,
+      })
+
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'LumenDark',
+        callback = function()
+          vim.cmd.colorscheme 'catppuccin-frappe'
+        end,
+      })
+
+      -- Enable lumen
+      vim.g.lumen_enable = true
+    end,
+  },
 }
