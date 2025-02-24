@@ -141,40 +141,6 @@ vim.keymap.set('n', '<leader>dB', function()
 end, { desc = 'Debug: Set Breakpoint' })
 vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
 
--- Autocomplete
--- This assumes that these functions are globally defined or imported
--- from your custom Lua modules that provide these functionalities.
--- Import the blink.cmp module
-local blink_cmp = require 'blink.cmp'
-
-vim.keymap.set('i', '<C-y>', function()
-  blink_cmp.select_and_accept()
-end, { desc = 'Select and Accept' })
-vim.keymap.set('i', '<Tab>', function()
-  blink_cmp.select_next()
-end, { desc = 'Select Next' })
-vim.keymap.set('i', '<S-Tab>', function()
-  blink_cmp.select_prev()
-end, { desc = 'Select Previous' })
-vim.keymap.set('i', '<C-space>', function()
-  blink_cmp.show()
-end, { desc = 'Show Suggestions' })
-vim.keymap.set('i', '<C-e>', function()
-  blink_cmp.hide()
-end, { desc = 'Hide Suggestions' })
-vim.keymap.set('i', '<C-b>', function()
-  blink_cmp.scroll_documentation_up()
-end, { desc = 'Scroll Documentation Up' })
-vim.keymap.set('i', '<C-f>', function()
-  blink_cmp.scroll_documentation_down()
-end, { desc = 'Scroll Documentation Down' })
-vim.keymap.set('i', '<C-n>', function()
-  blink_cmp.snippet_forward()
-end, { desc = 'Snippet Forward' })
-vim.keymap.set('i', '<C-p>', function()
-  blink_cmp.snippet_backward()
-end, { desc = 'Snippet Backward' })
-
 -- rust-tools
 -- Keymaps for rust-tools.nvim
 local rt = require 'rust-tools'

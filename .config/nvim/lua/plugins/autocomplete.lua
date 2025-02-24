@@ -2,11 +2,26 @@ return {
   {
     'saghen/blink.cmp',
     dependencies = 'rafamadriz/friendly-snippets',
-
     version = 'v0.*',
 
     opts = {
-      -- Keymaps are moved out of this section
+      keymap = {
+        preset = 'default',
+
+        ['<Enter>'] = { 'select_and_accept', 'fallback' },
+
+        ['<Tab>'] = { 'select_next', 'fallback' },
+        ['<S-Tab>'] = { 'select_prev', 'fallback' },
+
+        ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+        ['<C-e>'] = { 'hide' },
+
+        ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+        ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+
+        ['<C-n>'] = { 'snippet_forward', 'fallback' },
+        ['<C-p>'] = { 'snippet_backward', 'fallback' },
+      },
 
       appearance = {
         use_nvim_cmp_as_default = true,
@@ -16,7 +31,7 @@ return {
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
-      -- signature = { enabled = true },
+      signature = { enabled = true },
     },
   },
   {
