@@ -117,4 +117,33 @@ return {
       vim.g.lumen_enable = true
     end,
   },
+  {
+    'nvim-lualine/lualine.nvim',
+    lazy = true,
+    event = 'VeryLazy',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('lualine').setup {
+        options = {
+          theme = 'catppuccin',
+        },
+        sections = {
+          lualine_x = {
+            {
+              require('noice').api.statusline.mode.get,
+              cond = require('noice').api.statusline.mode.has,
+              color = { fg = '#ff9e64' },
+            },
+          },
+          lualine_c = {
+            {
+              'filename',
+              file_status = true,
+              path = 1,
+            },
+          },
+        },
+      }
+    end,
+  },
 }
