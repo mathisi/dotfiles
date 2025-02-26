@@ -12,7 +12,6 @@ return {
   { import = 'plugins.neo-tree' },
   { import = 'plugins.oil' },
   { import = 'plugins.rust-tools' },
-  -- { import = 'plugins.telescope' },
   { import = 'plugins.ui' },
   { import = 'plugins.theme' },
   { import = 'plugins.treesitter' },
