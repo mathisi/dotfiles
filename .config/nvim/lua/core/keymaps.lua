@@ -118,9 +118,9 @@ vim.keymap.set('n', '<leader>tg', ':TestVisit<CR>', {})
 -- -- LSP-specific key mappings
 -- vim.keymap.set('n', '<leader>cds', telescope_builtin.lsp_document_symbols, { desc = '[D]ocument [S]ymbols' })
 -- vim.keymap.set('n', '<leader>cws', telescope_builtin.lsp_dynamic_workspace_symbols, { desc = '[W]orkspace [S]ymbols' })
--- vim.keymap.set('n', '<leader>crn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
--- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
--- vim.keymap.set('n', '<leader>cK', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
+vim.keymap.set('n', '<leader>crn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
+vim.keymap.set('n', '<leader>cK', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
 
 -- DAP
 -- Import necessary modules for debugging
